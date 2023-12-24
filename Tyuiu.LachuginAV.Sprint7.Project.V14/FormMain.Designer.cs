@@ -31,10 +31,15 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
         {
             this.components = new System.ComponentModel.Container();
             this.panelTop_LAV = new System.Windows.Forms.Panel();
+            this.buttonHelp_LAV = new System.Windows.Forms.Button();
             this.textBoxTask_LAV = new System.Windows.Forms.TextBox();
             this.panelLeft_LAV = new System.Windows.Forms.Panel();
             this.groupBoxBus_LAV = new System.Windows.Forms.GroupBox();
             this.comboBoxBus_LAV = new System.Windows.Forms.ComboBox();
+            this.buttonDelete_LAV = new System.Windows.Forms.Button();
+            this.buttonAdd_LAV = new System.Windows.Forms.Button();
+            this.buttonSave_LAV = new System.Windows.Forms.Button();
+            this.buttonOpen_LAV = new System.Windows.Forms.Button();
             this.panelRight_LAV = new System.Windows.Forms.Panel();
             this.dataGridView_LAV = new System.Windows.Forms.DataGridView();
             this.ColumnNumber_LAV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,11 +54,6 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
             this.toolTip_LAV = new System.Windows.Forms.ToolTip(this.components);
             this.openFileDialog_LAV = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog_LAV = new System.Windows.Forms.SaveFileDialog();
-            this.buttonDelete_LAV = new System.Windows.Forms.Button();
-            this.buttonAdd_LAV = new System.Windows.Forms.Button();
-            this.buttonSave_LAV = new System.Windows.Forms.Button();
-            this.buttonOpen_LAV = new System.Windows.Forms.Button();
-            this.buttonHelp_LAV = new System.Windows.Forms.Button();
             this.panelTop_LAV.SuspendLayout();
             this.panelLeft_LAV.SuspendLayout();
             this.groupBoxBus_LAV.SuspendLayout();
@@ -67,16 +67,28 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
             this.panelTop_LAV.Controls.Add(this.textBoxTask_LAV);
             this.panelTop_LAV.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop_LAV.Location = new System.Drawing.Point(0, 0);
-            this.panelTop_LAV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelTop_LAV.Margin = new System.Windows.Forms.Padding(2);
             this.panelTop_LAV.Name = "panelTop_LAV";
             this.panelTop_LAV.Size = new System.Drawing.Size(600, 85);
             this.panelTop_LAV.TabIndex = 0;
+            // 
+            // buttonHelp_LAV
+            // 
+            this.buttonHelp_LAV.Image = global::Tyuiu.LachuginAV.Sprint7.Project.V14.Properties.Resources.help;
+            this.buttonHelp_LAV.Location = new System.Drawing.Point(0, 0);
+            this.buttonHelp_LAV.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonHelp_LAV.Name = "buttonHelp_LAV";
+            this.buttonHelp_LAV.Size = new System.Drawing.Size(61, 48);
+            this.buttonHelp_LAV.TabIndex = 1;
+            this.toolTip_LAV.SetToolTip(this.buttonHelp_LAV, "Сведения о программе");
+            this.buttonHelp_LAV.UseVisualStyleBackColor = true;
+            this.buttonHelp_LAV.Click += new System.EventHandler(this.buttonHelp_LAV_Click);
             // 
             // textBoxTask_LAV
             // 
             this.textBoxTask_LAV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTask_LAV.Location = new System.Drawing.Point(87, 37);
-            this.textBoxTask_LAV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxTask_LAV.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTask_LAV.Multiline = true;
             this.textBoxTask_LAV.Name = "textBoxTask_LAV";
             this.textBoxTask_LAV.Size = new System.Drawing.Size(430, 21);
@@ -94,7 +106,7 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
             this.panelLeft_LAV.Controls.Add(this.buttonOpen_LAV);
             this.panelLeft_LAV.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft_LAV.Location = new System.Drawing.Point(0, 85);
-            this.panelLeft_LAV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelLeft_LAV.Margin = new System.Windows.Forms.Padding(2);
             this.panelLeft_LAV.Name = "panelLeft_LAV";
             this.panelLeft_LAV.Size = new System.Drawing.Size(166, 281);
             this.panelLeft_LAV.TabIndex = 1;
@@ -103,9 +115,9 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
             // 
             this.groupBoxBus_LAV.Controls.Add(this.comboBoxBus_LAV);
             this.groupBoxBus_LAV.Location = new System.Drawing.Point(8, 128);
-            this.groupBoxBus_LAV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxBus_LAV.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxBus_LAV.Name = "groupBoxBus_LAV";
-            this.groupBoxBus_LAV.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxBus_LAV.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxBus_LAV.Size = new System.Drawing.Size(154, 41);
             this.groupBoxBus_LAV.TabIndex = 4;
             this.groupBoxBus_LAV.TabStop = false;
@@ -116,117 +128,11 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
             this.comboBoxBus_LAV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBoxBus_LAV.FormattingEnabled = true;
             this.comboBoxBus_LAV.Location = new System.Drawing.Point(2, 15);
-            this.comboBoxBus_LAV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxBus_LAV.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxBus_LAV.Name = "comboBoxBus_LAV";
             this.comboBoxBus_LAV.Size = new System.Drawing.Size(150, 21);
             this.comboBoxBus_LAV.TabIndex = 0;
             this.comboBoxBus_LAV.SelectedIndexChanged += new System.EventHandler(this.comboBoxBus_LAV_SelectedIndexChanged);
-            // 
-            // panelRight_LAV
-            // 
-            this.panelRight_LAV.Controls.Add(this.dataGridView_LAV);
-            this.panelRight_LAV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRight_LAV.Location = new System.Drawing.Point(166, 85);
-            this.panelRight_LAV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panelRight_LAV.Name = "panelRight_LAV";
-            this.panelRight_LAV.Size = new System.Drawing.Size(434, 281);
-            this.panelRight_LAV.TabIndex = 2;
-            // 
-            // dataGridView_LAV
-            // 
-            this.dataGridView_LAV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView_LAV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_LAV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnNumber_LAV,
-            this.ColumnStart_LAV,
-            this.ColumnEnd_LAV,
-            this.ColumnDistance_LAV,
-            this.ColumnPay_LAV,
-            this.ColumnStop_LAV,
-            this.ColumnBus_LAV,
-            this.ColumnDate_LAV,
-            this.ColumnTime_LAV});
-            this.dataGridView_LAV.Location = new System.Drawing.Point(3, 5);
-            this.dataGridView_LAV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dataGridView_LAV.Name = "dataGridView_LAV";
-            this.dataGridView_LAV.RowHeadersVisible = false;
-            this.dataGridView_LAV.RowHeadersWidth = 51;
-            this.dataGridView_LAV.RowTemplate.Height = 24;
-            this.dataGridView_LAV.Size = new System.Drawing.Size(430, 276);
-            this.dataGridView_LAV.TabIndex = 0;
-            // 
-            // ColumnNumber_LAV
-            // 
-            this.ColumnNumber_LAV.HeaderText = "Номер маршрута";
-            this.ColumnNumber_LAV.MinimumWidth = 6;
-            this.ColumnNumber_LAV.Name = "ColumnNumber_LAV";
-            this.ColumnNumber_LAV.Width = 125;
-            // 
-            // ColumnStart_LAV
-            // 
-            this.ColumnStart_LAV.HeaderText = "Начало маршрута";
-            this.ColumnStart_LAV.MinimumWidth = 6;
-            this.ColumnStart_LAV.Name = "ColumnStart_LAV";
-            this.ColumnStart_LAV.Width = 125;
-            // 
-            // ColumnEnd_LAV
-            // 
-            this.ColumnEnd_LAV.HeaderText = "Конец маршрута";
-            this.ColumnEnd_LAV.MinimumWidth = 6;
-            this.ColumnEnd_LAV.Name = "ColumnEnd_LAV";
-            this.ColumnEnd_LAV.Width = 125;
-            // 
-            // ColumnDistance_LAV
-            // 
-            this.ColumnDistance_LAV.HeaderText = "Протяженость маршрута";
-            this.ColumnDistance_LAV.MinimumWidth = 6;
-            this.ColumnDistance_LAV.Name = "ColumnDistance_LAV";
-            this.ColumnDistance_LAV.Width = 125;
-            // 
-            // ColumnPay_LAV
-            // 
-            this.ColumnPay_LAV.HeaderText = "Наличие системы безналичной оплаты проезда";
-            this.ColumnPay_LAV.MinimumWidth = 6;
-            this.ColumnPay_LAV.Name = "ColumnPay_LAV";
-            this.ColumnPay_LAV.Width = 125;
-            // 
-            // ColumnStop_LAV
-            // 
-            this.ColumnStop_LAV.HeaderText = "Наличие автоматического объявления остановки";
-            this.ColumnStop_LAV.MinimumWidth = 6;
-            this.ColumnStop_LAV.Name = "ColumnStop_LAV";
-            this.ColumnStop_LAV.Width = 125;
-            // 
-            // ColumnBus_LAV
-            // 
-            this.ColumnBus_LAV.HeaderText = "Вид транспорта";
-            this.ColumnBus_LAV.MinimumWidth = 6;
-            this.ColumnBus_LAV.Name = "ColumnBus_LAV";
-            this.ColumnBus_LAV.Width = 125;
-            // 
-            // ColumnDate_LAV
-            // 
-            this.ColumnDate_LAV.HeaderText = "Дата введения маршрута";
-            this.ColumnDate_LAV.MinimumWidth = 6;
-            this.ColumnDate_LAV.Name = "ColumnDate_LAV";
-            this.ColumnDate_LAV.Width = 125;
-            // 
-            // ColumnTime_LAV
-            // 
-            this.ColumnTime_LAV.HeaderText = "Время в пути";
-            this.ColumnTime_LAV.MinimumWidth = 6;
-            this.ColumnTime_LAV.Name = "ColumnTime_LAV";
-            this.ColumnTime_LAV.Width = 125;
-            // 
-            // toolTip_LAV
-            // 
-            this.toolTip_LAV.ToolTipTitle = "Справка";
-            // 
-            // openFileDialog_LAV
-            // 
-            this.openFileDialog_LAV.FileName = "openFileDialog1";
             // 
             // buttonDelete_LAV
             // 
@@ -276,17 +182,77 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
             this.buttonOpen_LAV.UseVisualStyleBackColor = true;
             this.buttonOpen_LAV.Click += new System.EventHandler(this.buttonOpen_LAV_Click);
             // 
-            // buttonHelp_LAV
+            // panelRight_LAV
             // 
-            this.buttonHelp_LAV.Image = global::Tyuiu.LachuginAV.Sprint7.Project.V14.Properties.Resources.help;
-            this.buttonHelp_LAV.Location = new System.Drawing.Point(0, 0);
-            this.buttonHelp_LAV.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonHelp_LAV.Name = "buttonHelp_LAV";
-            this.buttonHelp_LAV.Size = new System.Drawing.Size(61, 48);
-            this.buttonHelp_LAV.TabIndex = 1;
-            this.toolTip_LAV.SetToolTip(this.buttonHelp_LAV, "Сведения о программе");
-            this.buttonHelp_LAV.UseVisualStyleBackColor = true;
-            this.buttonHelp_LAV.Click += new System.EventHandler(this.buttonHelp_LAV_Click);
+            this.panelRight_LAV.Controls.Add(this.dataGridView_LAV);
+            this.panelRight_LAV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelRight_LAV.Location = new System.Drawing.Point(166, 85);
+            this.panelRight_LAV.Margin = new System.Windows.Forms.Padding(2);
+            this.panelRight_LAV.Name = "panelRight_LAV";
+            this.panelRight_LAV.Size = new System.Drawing.Size(434, 281);
+            this.panelRight_LAV.TabIndex = 2;
+            // 
+            // dataGridView_LAV
+            // 
+            this.dataGridView_LAV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView_LAV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_LAV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnNumber_LAV,
+            this.ColumnStart_LAV,
+            this.ColumnEnd_LAV,
+            this.ColumnDistance_LAV,
+            this.ColumnPay_LAV,
+            this.ColumnStop_LAV,
+            this.ColumnBus_LAV,
+            this.ColumnDate_LAV,
+            this.ColumnTime_LAV});
+            this.dataGridView_LAV.Location = new System.Drawing.Point(3, 5);
+            this.dataGridView_LAV.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView_LAV.Name = "dataGridView_LAV";
+            this.dataGridView_LAV.RowHeadersVisible = false;
+            this.dataGridView_LAV.RowHeadersWidth = 51;
+            this.dataGridView_LAV.RowTemplate.Height = 24;
+            this.dataGridView_LAV.Size = new System.Drawing.Size(430, 276);
+            this.dataGridView_LAV.TabIndex = 0;
+            this.dataGridView_LAV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_LAV_CellContentClick);
+            // 
+            // ColumnNumber_LAV
+            // 
+            this.ColumnNumber_LAV.HeaderText = "Номер маршрута";
+            this.ColumnNumber_LAV.MinimumWidth = 6;
+            this.ColumnNumber_LAV.Name = "ColumnNumber_LAV";
+            this.ColumnNumber_LAV.Width = 125;
+            // 
+            // ColumnStart_LAV
+            // 
+            this.ColumnStart_LAV.HeaderText = "Вид транспорта";
+            this.ColumnStart_LAV.MinimumWidth = 6;
+            this.ColumnStart_LAV.Name = "ColumnStart_LAV";
+            this.ColumnStart_LAV.Width = 125;
+            // 
+            // ColumnEnd_LAV
+            // 
+            this.ColumnEnd_LAV.HeaderText = "Начало маршрута";
+            this.ColumnEnd_LAV.MinimumWidth = 6;
+            this.ColumnEnd_LAV.Name = "ColumnEnd_LAV";
+            this.ColumnEnd_LAV.Width = 125;
+            // 
+            // ColumnBus_LAV
+            // 
+            this.ColumnBus_LAV.HeaderText = "Конец маршрута";
+            this.ColumnBus_LAV.MinimumWidth = 6;
+            this.ColumnBus_LAV.Name = "ColumnBus_LAV";
+            this.ColumnBus_LAV.Width = 125;
+            // 
+            // toolTip_LAV
+            // 
+            this.toolTip_LAV.ToolTipTitle = "Справка";
+            // 
+            // openFileDialog_LAV
+            // 
+            this.openFileDialog_LAV.FileName = "openFileDialog1";
             // 
             // FormMain
             // 
@@ -296,11 +262,10 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
             this.Controls.Add(this.panelRight_LAV);
             this.Controls.Add(this.panelLeft_LAV);
             this.Controls.Add(this.panelTop_LAV);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Спринт 7 | Проект | Вариант 14 |Лачугин А.В.";
-
             this.panelTop_LAV.ResumeLayout(false);
             this.panelTop_LAV.PerformLayout();
             this.panelLeft_LAV.ResumeLayout(false);

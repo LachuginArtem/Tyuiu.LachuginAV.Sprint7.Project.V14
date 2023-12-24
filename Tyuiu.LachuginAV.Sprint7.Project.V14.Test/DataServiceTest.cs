@@ -13,7 +13,7 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14.Test
         {
             DataService ds = new DataService();
 
-            string filePath = @"C:\Users\Kirya\source\repos\Tyuiu.AgafonovKS.Sprint7\AgafonovKS.DataBase.csv";
+            string filePath = @"C:";
 
             AddDataToCSV(filePath);
         }

@@ -154,5 +154,10 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
             FormAbout formabout = new FormAbout();
             formabout.ShowDialog();
         }
+
+        private void dataGridView_LAV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

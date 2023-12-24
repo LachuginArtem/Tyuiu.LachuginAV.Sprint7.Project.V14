@@ -11,7 +11,7 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14.Lib
     {
         public string[,] LoadFromDataFile(string path)
         {
-            string[] str = File.ReadAllLines(path);
+            string[] str = File.ReadAllLines(path, Encoding.GetEncoding(1251));
 
             int columns = str[0].Split(';').Length;
             int rows = str.Length;
