@@ -1,39 +1,36 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Tyuiu.LachuginAV.Sprint7.Project.V14.Lib;
+using System.IO;
 
 namespace Tyuiu.LachuginAV.Sprint7.Project.V14.Test
 {
     [TestClass]
     public class DataServiceTest
     {
-        public DataService ds = new DataService();
-
         [TestMethod]
-        public void ValidAverage()
+        public void TestMethod1()
         {
-            int[] array = { 1, 2, 3, 4, 5 };
-            double res = ds.Average(array);
-            double wait = 3;
-            Assert.AreEqual(wait, res);
+            DataService ds = new DataService();
+
+            string filePath = @"C:\Users\Kirya\source\repos\Tyuiu.AgafonovKS.Sprint7\AgafonovKS.DataBase.csv";
+
+            AddDataToCSV(filePath);
         }
 
-        [TestMethod]
-        public void ValidMax()
+        private void AddDataToCSV(string filePath)
         {
-            int[] array = { 1, 2, 3, 4, 5 };
-            int res = ds.Max(array);
-            int wait = 5;
-            Assert.AreEqual(wait, res);
-        }
-
-        [TestMethod]
-        public void ValidMin()
-        {
-            int[] array = { 1, 2, 3, 4, 5 };
-            int res = ds.Min(array);
-            int wait = 1;
-            Assert.AreEqual(wait, res);
+            try
+            {
+                using (var writer = new StreamWriter(filePath, true))
+                {
+                    writer.WriteLine("Начало маршрута; Конец маршрута");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
         }
     }
 }

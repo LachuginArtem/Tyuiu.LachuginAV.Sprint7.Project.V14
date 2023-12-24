@@ -13,124 +13,146 @@ using Tyuiu.LachuginAV.Sprint7.Project.V14.Lib;
 
 namespace Tyuiu.LachuginAV.Sprint7.Project.V14
 {
-    public partial class FormMain_LAV : Form
+    public partial class FormMain : Form
     {
-        public FormMain_LAV()
+        public FormMain()
         {
             InitializeComponent();
         }
-
+        static int rows;
+        static int columns;
+        static string openFilePath;
         DataService ds = new DataService();
 
-        private void buttonDone_LAV_Click(object sender, EventArgs e)
+        private void buttonOpen_LAV_Click(object sender, EventArgs e)
         {
-            string path = @"C:\"; 
-            foreach (var line in File.ReadLines(path))
+            try
             {
-                var array = line.Split(',');
-                dataGridViewData_LAV.Rows.Add(array);
+                openFileDialog_LAV.ShowDialog();
+                openFilePath = openFileDialog_LAV.FileName;
+
+                string[,] matrix = ds.LoadFromDataFile(openFilePath);
+
+                rows = matrix.GetLength(0);
+                columns = matrix.GetLength(1);
+
+                dataGridView_LAV.RowCount = rows + 1;
+                dataGridView_LAV.ColumnCount = columns;
+
+                //добавление данных
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < columns; j++)
+                    {
+                        dataGridView_LAV.Rows[i].Cells[j].Value = matrix[i, j];
+                    }
+                }
+                dataGridView_LAV.AutoResizeColumns();
+                dataGridView_LAV.ScrollBars = ScrollBars.Both;
+                buttonSave_LAV.Enabled = true;
+                buttonAdd_LAV.Enabled = true;
+                buttonDelete_LAV.Enabled = true;
+            }
+            catch
+            {
+                MessageBox.Show("Файл не выбран", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void dataGridViewData_LAV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void buttonSave_LAV_Click(object sender, EventArgs e)
         {
-            this.chartDiagram_LAV.ChartAreas[0].AxisX.Title = "Время";
-            this.chartDiagram_LAV.ChartAreas[0].AxisY.Title = "Количество автомобилей";
-            chartDiagram_LAV.Series[0].Points.Clear();
-            string path = @"C:\";
+            try
+            {
+                saveFileDialog_LAV.FileName = ".csv";
+                saveFileDialog_LAV.InitialDirectory = @":L";
+                if (saveFileDialog_LAV.ShowDialog() == DialogResult.OK)
+                {
+                    string savepath = saveFileDialog_LAV.FileName;
 
-            int columns = 5;
-            int rows = 23;
+                    if (File.Exists(savepath)) File.Delete(savepath);
 
-            string[] lines = File.ReadAllLines(path);
-            int[,] matrix = new int[columns, rows];
-            for (int i = 0; i < columns; i++)
-            {
-                int[] row = lines[i].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(Int32.Parse).ToArray();
-                for (int j = 0; j < rows; j++)
-                {
-                    matrix[i, j] = row[j];
-                }
-            }
+                    int rows = dataGridView_LAV.RowCount;
+                    int columns = dataGridView_LAV.ColumnCount;
 
-            int[] array = new int[23];
+                    StringBuilder strBuilder = new StringBuilder();
 
-            if (dataGridViewData_LAV.CurrentCell.RowIndex.Equals(0) && e.RowIndex != -1)
-            {
-                if (dataGridViewData_LAV.CurrentCell != null && dataGridViewData_LAV.CurrentCell.Value != null)
-                {
-                    for (int j = 0; j < matrix.GetUpperBound(1); j++)
+                    for (int i = 0; i < rows; i++)
                     {
-                        chartDiagram_LAV.Series[0].Points.AddXY(j + ":00", matrix[0, j]);
-                        array[j] = matrix[0, j];
+                        for (int j = 0; j < columns; j++)
+                        {
+                            strBuilder.Append(dataGridView_LAV.Rows[i].Cells[j].Value);
+
+                            if (j != columns - 1) strBuilder.Append(";");
+                        }
+                        strBuilder.AppendLine();
                     }
-                    textBoxAverage_LAV.Text = Convert.ToString(ds.Average(array));
-                    textBoxMax_LAV.Text = Convert.ToString(ds.Max(array));
-                    textBoxMin_LAV.Text = Convert.ToString(ds.Min(array));
+                    File.WriteAllText(savepath, strBuilder.ToString(), Encoding.GetEncoding(1251));
+                    MessageBox.Show("Файл успешно сохранен", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            if (dataGridViewData_LAV.CurrentCell.RowIndex.Equals(1) && e.RowIndex != -1)
+            catch
             {
-                if (dataGridViewData_LAV.CurrentCell != null && dataGridViewData_LAV.CurrentCell.Value != null)
+                MessageBox.Show("Файл не сохранен", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonAdd_LAV_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dataGridView_LAV.Rows.Add();
+            }
+            catch
+            {
+                MessageBox.Show("Невозможно добавить данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonDelete_LAV_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_LAV.RowCount != 0)
+            {
+                int valueDel = 0;
+                var res = MessageBox.Show($"{"Удалить данную строку?"}", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes) valueDel = 1;
+                if (valueDel == 1)
                 {
-                    for (int j = 0; j < matrix.GetUpperBound(1); j++)
-                    {
-                        chartDiagram_LAV.Series[0].Points.AddXY(j + ":00", matrix[1, j]);
-                        array[j] = matrix[1, j];
-                    }
-                    textBoxAverage_LAV.Text = Convert.ToString(ds.Average(array));
-                    textBoxMax_LAV.Text = Convert.ToString(ds.Max(array));
-                    textBoxMin_LAV.Text = Convert.ToString(ds.Min(array));
+                    int del = dataGridView_LAV.CurrentCell.RowIndex;
+                    dataGridView_LAV.Rows.Remove(dataGridView_LAV.Rows[del]);
                 }
             }
-            if (dataGridViewData_LAV.CurrentCell.RowIndex.Equals(2) && e.RowIndex != -1)
+            else
             {
-                if (dataGridViewData_LAV.CurrentCell != null && dataGridViewData_LAV.CurrentCell.Value != null)
-                {
-                    for (int j = 0; j < matrix.GetUpperBound(1); j++)
-                    {
-                        chartDiagram_LAV.Series[0].Points.AddXY(j + ":00", matrix[2, j]);
-                        array[j] = matrix[2, j];
-                    }
-                    textBoxAverage_LAV.Text = Convert.ToString(ds.Average(array));
-                    textBoxMax_LAV.Text = Convert.ToString(ds.Max(array));
-                    textBoxMin_LAV.Text = Convert.ToString(ds.Min(array));
-                }
+                MessageBox.Show("Строка не выбрана", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (dataGridViewData_LAV.CurrentCell.RowIndex.Equals(3) && e.RowIndex != -1)
+        }
+
+        private void comboBoxBus_LAV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string valueFilt = comboBoxBus_LAV.SelectedItem.ToString(); //извлечение строкового значения выбранного элемента ComboBox
+            if (!string.IsNullOrEmpty(valueFilt))
             {
-                if (dataGridViewData_LAV.CurrentCell != null && dataGridViewData_LAV.CurrentCell.Value != null)
+                foreach (DataGridViewRow row in dataGridView_LAV.Rows)
                 {
-                    for (int j = 0; j < matrix.GetUpperBound(1); j++)
+                    if (!row.IsNewRow) // проверка новая ли строка
                     {
-                        chartDiagram_LAV.Series[0].Points.AddXY(j + ":00", matrix[3, j]);
-                        array[j] = matrix[3, j];
+                        if (row.Cells["Number_CSR"].Value != null && row.Cells["Number_CSR"].Value.ToString() == valueFilt)
+                        {
+                            row.Visible = true;
+                        }
+                        else
+                        {
+                            row.Visible = false;
+                        }
                     }
-                    textBoxAverage_LAV.Text = Convert.ToString(ds.Average(array));
-                    textBoxMax_LAV.Text = Convert.ToString(ds.Max(array));
-                    textBoxMin_LAV.Text = Convert.ToString(ds.Min(array));
-                }
-            }
-            if (dataGridViewData_LAV.CurrentCell.RowIndex.Equals(4) && e.RowIndex != -1)
-            {
-                if (dataGridViewData_LAV.CurrentCell != null && dataGridViewData_LAV.CurrentCell.Value != null)
-                {
-                    for (int j = 0; j < matrix.GetUpperBound(1); j++)
-                    {
-                        chartDiagram_LAV.Series[0].Points.AddXY(j + ":00", matrix[4, j]);
-                        array[j] = matrix[4, j];
-                    }
-                    textBoxAverage_LAV.Text = Convert.ToString(ds.Average(array));
-                    textBoxMax_LAV.Text = Convert.ToString(ds.Max(array));
-                    textBoxMin_LAV.Text = Convert.ToString(ds.Min(array));
                 }
             }
         }
 
-        private void buttonInfo_LAV_Click(object sender, EventArgs e)
+        private void buttonHelp_LAV_Click(object sender, EventArgs e)
         {
-            FormAbout_LAV formAbout = new FormAbout_LAV();
-            formAbout.ShowDialog();
+            FormAbout formabout = new FormAbout();
+            formabout.ShowDialog();
         }
     }
 }

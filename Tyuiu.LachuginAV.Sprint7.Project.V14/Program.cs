@@ -16,7 +16,7 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain_LAV());
+            Application.Run(new FormMain());
         }
     }
 }

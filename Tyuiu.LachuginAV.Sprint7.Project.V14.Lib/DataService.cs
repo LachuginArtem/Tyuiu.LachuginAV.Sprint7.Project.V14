@@ -9,35 +9,25 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14.Lib
 {
     public class DataService
     {
-        public double Average(int[] array)
+        public string[,] LoadFromDataFile(string path)
         {
-            double average = 0;
-            for (int i = 0; i < array.Length; i++)
+            string[] str = File.ReadAllLines(path);
+
+            int columns = str[0].Split(';').Length;
+            int rows = str.Length;
+
+            string[,] matrix = new string[rows, columns];
+
+            for (int i = 0; i < str.Length; i++)
             {
-                average += array[i];
+                string strIndexI = str[i];
+                string[] strArr = strIndexI.Split(';');
+                for (int c = 0; c < strArr.Length; c++)
+                {
+                    matrix[i, c] = strArr[c];
+                }
             }
-            average = Math.Truncate(average / array.Length);
-            return average;
-        }
-        public int Max(int[] array)
-        {
-            int maxValue = int.MinValue;
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] > maxValue)
-                    maxValue = array[i];
-            }
-            return maxValue;
-        }
-        public int Min(int[] array)
-        {
-            int minValue = int.MaxValue;
-            for (int i = 0; i < array.Length; i++)
-            {
-                if ((array[i] < minValue) && (array[i] != 0))
-                    minValue = array[i];
-            }
-            return minValue;
+            return matrix;
         }
     }
 }

@@ -10,16 +10,17 @@ using System.Windows.Forms;
 
 namespace Tyuiu.LachuginAV.Sprint7.Project.V14
 {
-    public partial class FormAbout_LAV : Form
+    public partial class FormAbout : Form
     {
-        public FormAbout_LAV()
+        public FormAbout()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonOK_LAV_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
     }
 }
