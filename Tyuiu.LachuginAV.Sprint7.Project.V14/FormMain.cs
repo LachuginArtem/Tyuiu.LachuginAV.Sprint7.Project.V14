@@ -24,7 +24,7 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
 
         private void buttonDone_LAV_Click(object sender, EventArgs e)
         {
-            string path = @"C:\";
+            string path = @"C:\"; 
             foreach (var line in File.ReadLines(path))
             {
                 var array = line.Split(',');
