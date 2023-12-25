@@ -148,7 +148,6 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
                 }
             }
         }
-
         private void buttonHelp_LAV_Click(object sender, EventArgs e)
         {
             FormAbout formabout = new FormAbout();

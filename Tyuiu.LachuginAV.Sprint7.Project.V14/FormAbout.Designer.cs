@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Tyuiu.LachuginAV.Sprint7.Project.V14
 {
     partial class FormAbout
@@ -37,7 +39,7 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
             // 
             // pictureBoxAvatar_LAV
             // 
- 
+
             this.pictureBoxAvatar_LAV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBoxAvatar_LAV.Name = "pictureBoxAvatar_LAV";
             this.pictureBoxAvatar_LAV.Size = new System.Drawing.Size(112, 162);
@@ -67,7 +69,7 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
             this.labelInfo_LAV.Text = "Разработчик: Лачугин.А.В\r\nгруппа АСОиУЬ-23-3\r\n\r\nПрограмма разработана в рамках из" +
     "учения языка С#\r\n\r\nТюменский индустриальный университет (с)2023\r\nВысшая школа ци" +
     "фровых технологий (с)2023\r\n";
-        
+
             // 
             // FormAbout
             // 

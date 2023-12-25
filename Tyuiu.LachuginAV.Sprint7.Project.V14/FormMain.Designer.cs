@@ -1,4 +1,7 @@
 ﻿
+using System;
+using System.Windows.Forms;
+
 namespace Tyuiu.LachuginAV.Sprint7.Project.V14
 {
     partial class FormMain
@@ -42,18 +45,13 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
             this.buttonOpen_LAV = new System.Windows.Forms.Button();
             this.panelRight_LAV = new System.Windows.Forms.Panel();
             this.dataGridView_LAV = new System.Windows.Forms.DataGridView();
-            this.ColumnNumber_LAV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStart_LAV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnEnd_LAV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDistance_LAV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPay_LAV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStop_LAV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnBus_LAV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDate_LAV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTime_LAV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTip_LAV = new System.Windows.Forms.ToolTip(this.components);
             this.openFileDialog_LAV = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog_LAV = new System.Windows.Forms.SaveFileDialog();
+            this.ColumnNumber_LAV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStart_LAV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnEnd_LAV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnBus_LAV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelTop_LAV.SuspendLayout();
             this.panelLeft_LAV.SuspendLayout();
             this.groupBoxBus_LAV.SuspendLayout();
@@ -202,12 +200,7 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
             this.ColumnNumber_LAV,
             this.ColumnStart_LAV,
             this.ColumnEnd_LAV,
-            this.ColumnDistance_LAV,
-            this.ColumnPay_LAV,
-            this.ColumnStop_LAV,
-            this.ColumnBus_LAV,
-            this.ColumnDate_LAV,
-            this.ColumnTime_LAV});
+            this.ColumnBus_LAV});
             this.dataGridView_LAV.Location = new System.Drawing.Point(3, 5);
             this.dataGridView_LAV.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView_LAV.Name = "dataGridView_LAV";
@@ -217,6 +210,14 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
             this.dataGridView_LAV.Size = new System.Drawing.Size(430, 276);
             this.dataGridView_LAV.TabIndex = 0;
             this.dataGridView_LAV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_LAV_CellContentClick);
+            // 
+            // toolTip_LAV
+            // 
+            this.toolTip_LAV.ToolTipTitle = "Справка";
+            // 
+            // openFileDialog_LAV
+            // 
+            this.openFileDialog_LAV.FileName = "openFileDialog1";
             // 
             // ColumnNumber_LAV
             // 
@@ -245,14 +246,6 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
             this.ColumnBus_LAV.MinimumWidth = 6;
             this.ColumnBus_LAV.Name = "ColumnBus_LAV";
             this.ColumnBus_LAV.Width = 125;
-            // 
-            // toolTip_LAV
-            // 
-            this.toolTip_LAV.ToolTipTitle = "Справка";
-            // 
-            // openFileDialog_LAV
-            // 
-            this.openFileDialog_LAV.FileName = "openFileDialog1";
             // 
             // FormMain
             // 
@@ -290,17 +283,12 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14
         private System.Windows.Forms.Button buttonOpen_LAV;
         private System.Windows.Forms.Panel panelRight_LAV;
         private System.Windows.Forms.DataGridView dataGridView_LAV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNumber_LAV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStart_LAV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEnd_LAV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDistance_LAV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPay_LAV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStop_LAV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBus_LAV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDate_LAV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTime_LAV;
         private System.Windows.Forms.ToolTip toolTip_LAV;
         private System.Windows.Forms.OpenFileDialog openFileDialog_LAV;
         private System.Windows.Forms.SaveFileDialog saveFileDialog_LAV;
+        private DataGridViewTextBoxColumn ColumnNumber_LAV;
+        private DataGridViewTextBoxColumn ColumnStart_LAV;
+        private DataGridViewTextBoxColumn ColumnEnd_LAV;
+        private DataGridViewTextBoxColumn ColumnBus_LAV;
     }
 }
