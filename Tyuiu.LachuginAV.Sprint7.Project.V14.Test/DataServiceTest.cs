@@ -28,11 +28,11 @@ namespace Tyuiu.LachuginAV.Sprint7.Project.V14.Test
         {
             DataService ds = new DataService();
 
-            object[,] dataTest = new object[2, 4] {{ "Avtobus1", "Place1", "30", "100"},
-                                                    {"Avtobus2", "Place2", "40", "350"}};
+            object[,] dataTest = new object[2, 4] {{ "Avtobus1", "Place1", "23", "10"},
+                                                    {"Avtobus2", "Place2", "20", "35"}};
 
-            object[,] dataWait = new object[2, 4] { { "Avtobus2", "Place2", "40", "350" },
-                                                    { "Avtobus1", "Place1", "30", "100"} };
+            object[,] dataWait = new object[2, 4] { { "Avtobus2", "Place2", "20", "35" },
+                                                    { "Avtobus1", "Place1", "23", "10"} };
 
             CollectionAssert.AreEqual(dataWait, ds.YearSort(dataTest));
         }
