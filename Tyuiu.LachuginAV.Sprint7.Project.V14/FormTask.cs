@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace Tyuiu.LachuginAV.Sprint7.Project.V14
 {
-    public partial class FormAbout : Form
+    public partial class FormTask : Form
     {
-        public FormAbout()
+        public FormTask()
         {
             InitializeComponent();
-        }
-
-        private void FormAbout_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelInfo_LAV_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
